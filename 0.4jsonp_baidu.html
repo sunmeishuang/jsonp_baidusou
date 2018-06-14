@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp" value="">
+    <div id="d"></div>
+</body>
+<script src="./ajax.js"></script>
+<script>
+    // 百度请求地址：https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=q&json=1&p=3&sid=26522_1443_21127_26350_26578_20927&req=2&bs=qq%E9%82%AE%E7%AE%B1&csor=1&cb=jQuery110204641591571091357_1528978873468&_=1528978873472
+
+    function jQuery110204641591571091357_1528978873468(data){
+        console.log(data);
+        document.getElementById('d').innerHTML =  '';
+        var s = data.s;
+        var count = 0;
+        if(s.length >= 4){
+            count = 4;
+        }else if(s.length < 4){
+            count = s.length;
+        }
+        for(var i=0; i<count; i++){
+            document.getElementById('d').innerHTML += "<div>"+s[i]+"</div>";
+        }
+        
+    }
+    document.getElementById('inp').oninput = function(){
+        var sc = document.createElement('script');
+        sc.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+this.value+"&json=1&p=3&sid=26522_1443_21127_26350_26578_20927&req=2&bs=qq%E9%82%AE%E7%AE%B1&csor=1&cb=jQuery110204641591571091357_1528978873468&_=1528978873472";
+        document.getElementsByTagName('head')[0].appendChild(sc);
+    }
+    
+
+</script>
+</html>
